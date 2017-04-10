@@ -1,4 +1,4 @@
-# Tutorial Comunicação entre aplicativos Android utilizando Kotlin e uma Aplicações Web Services RestFul
+# Tutorial de como fazer uma aplicação Android escrita em Kotlin conversar com um Web Server RestFul feito em NodeJS
 
 Este tutorial tem o intuito de sanar algumas duvidas encontradas no desenvolvimento de aplicações Android, com comunicação entre Aplicações Web Services RestFul
 
