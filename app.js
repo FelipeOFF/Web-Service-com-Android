@@ -148,4 +148,10 @@ app.delete('/produto', function(req, res){
  * Tome cuidado com esta etápa, se por ventura você cometer algum erro
  * aqui este erro voltara na hora de fazer o aplicativo.
  * 
+ * Você que esta vendo este tutorial agora, deve seguir o seguinte caminho
+ * para a proxima etapa.
+ * 
+ * /MobileApplication/app/src/main/java/felipeoff/com/br/mobileapplication/activities/MainActivity.kt
+ * 
+ * Dentro deste arquivo tera um breve começo de como fazer uma aplicação usando kotlin.
  */
