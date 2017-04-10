@@ -1,0 +1,25 @@
+{
+  "name": "produtos_manager",
+  "version": "1.0.0",
+  "description": "Um tutorial de como fazer uma aplicação Android converçar com um Server Rest Full.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "RestFull",
+    "Android",
+    "Kotlin",
+    "NodeJS",
+    "Express",
+    "MongoDB"
+  ],
+  "author": "felipe de Oliveira <felipe-not@hotmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.2",
+    "validator": "^7.0.0"
+  }
+}
