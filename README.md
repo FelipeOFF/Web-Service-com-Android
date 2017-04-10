@@ -15,15 +15,14 @@ Sera desenvolvido uma aplicação Android simples de controle de produtos, onde 
 
 ```
 .
-├── app.js
-├── config
-│   ├── app.js
-│   ├── app_options.json
-│   └── db.js
-├── controllers
-│   └── product.js
-├── package.json
-└── README.md
+├── app.js -> Rotas
+├── config -> Aqui onde vai ficar as configurações da aplicação
+│   ├── app.js -> Configurações do Express
+│   ├── app_options.json -> Informaçẽos uteis, como a Porta
+│   └── db.js -> Configuração do DB
+├── controllers -> Aqui onde vai ficar o controller dos modelos
+│   └── product.js -> Controller do modelo Product
+├── package.json -> Modulos e informações do Web Server
 ```
 
 ### Ordem do Tutorial
