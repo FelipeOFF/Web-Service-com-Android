@@ -55,7 +55,6 @@ var contructResult = exports.contructResult = function(status = 200, msg = "Resu
  */
 exports.list = function(){
     return new Promise((resolve, reject) => {
-
         // Aqui estou requisitando todos os produtos ao DB
         db.Product.find({}, (err, products) => {
             if(err){
@@ -64,7 +63,7 @@ exports.list = function(){
                 reject(contructResult(403, "Obtivemos um erro na requisição dos produtos", err))
             }else{
                 // Deu tudo certo, temos uma lista de produtos
-                resolve(contructResult(null, null, null, products))
+                resolve(contructResult(undefined, undefined, undefined, products))
             }
         })
     })
@@ -85,10 +84,10 @@ exports.product = function(id){
             }else{
                 if(product){
                     // Deu tudo certo temos nosso produto
-                    resolve(contructResult(null, null, null, product))
+                    resolve(contructResult(undefined, undefined, undefined, product))
                 }else{
                     // Tivemos um impecilho, não há nenhum produto com este nome
-                    resolve(contructResult(null, "Nenhum produto encontrado com este id", null, null))
+                    resolve(contructResult(undefined, "Nenhum produto encontrado com este id", undefined, undefined))
                 }
             }
         })
@@ -101,23 +100,18 @@ exports.product = function(id){
  */
 exports.save = function(name, price){
     return new Promise((resolve, reject) => {
-        if(!validator.isDecimal(price)){
-            console.log('Erro ao validar o preço')
-            reject(contructResult(403, "Você deve fornecer um preço compativel ", null))
-        }else{
-            new db.Product({
-                "name": name,
-                "price": price
-            }).save((err, product) => {
-                if(err){
-                    // OPS: obtivemos um erro nesta etapa.
-                    console.log("Erro no momento de salvar o produto \n" + err)
-                    reject(contructResult(503, "Obtivemos um erro no momento de salvamento do produto ", err))
-                }else{
-                    resolve(contructResult(null, null, null, product))
-                }
-            })
-        }
+        new db.Product({
+            "name": name,
+            "price": price
+        }).save((err, product) => {
+            if(err){
+                // OPS: obtivemos um erro nesta etapa.
+                console.log("Erro no momento de salvar o produto \n" + err)
+                reject(contructResult(503, "Obtivemos um erro no momento de salvamento do produto ", err))
+            }else{
+                resolve(contructResult(undefined, undefined, undefined, product))
+            }
+        })
     })
 }
 
@@ -128,41 +122,36 @@ exports.save = function(name, price){
  */
 exports.update = function(id, name, price){
     return new Promise((resolve, reject) => {
-        if(price != undefined && !validator.isDecimal(price)){
-            console.log('Erro ao validar o preço')
-            reject(contructResult(403, "Você deve fornecer um preço compativel ", null))
-        }else{
-            db.Product.findById(id, (err, product) => {
-                if(err){
-                    console.log('Não foi possivel achar este produto, ' + err)
-                    reject(contructResult(403, 'Obtivemos um erro no momento de salvamento do produto ', err))
-                }else{
-                    /**
-                     * Repare que aqui estamos validando se esta 
-                     * vindo algum nome ou preço. Se não estiver vindo
-                     * nada, ou seja undefined, então não sera atribuido
-                     * nada na propiedade corespondente.
-                     */
-                    if(name){
-                        product.name = name
-                    }
-                    if(price){
-                        product.price = price
-                    }
-
-                    /**
-                     * Depois das alterações vamos salvar
-                     */
-                    product.save((err, productSaved) => {
-                        if(err){
-                            reject(contructResult(503, 'Obtivemos um erro no momento de salvamento do produto ', err))
-                        }else{
-                            resolve(contructResult(null, null, null, productSaved))
-                        }
-                    })
+        db.Product.findById(id, (err, product) => {
+            if(err){
+                console.log('Não foi possivel achar este produto, ' + err)
+                reject(contructResult(403, 'Obtivemos um erro no momento de salvamento do produto ', err))
+            }else{
+                /**
+                 * Repare que aqui estamos validando se esta 
+                 * vindo algum nome ou preço. Se não estiver vindo
+                 * nada, ou seja undefined, então não sera atribuido
+                 * nada na propiedade corespondente.
+                 */
+                if(name){
+                    product.name = name
                 }
-            })
-        }
+                if(price){
+                    product.price = price
+                }
+
+                /**
+                 * Depois das alterações vamos salvar
+                 */
+                product.save((err, productSaved) => {
+                    if(err){
+                        reject(contructResult(503, 'Obtivemos um erro no momento de salvamento do produto ', err))
+                    }else{
+                        resolve(contructResult(undefined, undefined, undefined, productSaved))
+                    }
+                })
+            }
+        })
     })
 }
 
@@ -182,7 +171,7 @@ exports.delete = function(id){
                         if(error){
                             reject(contructResult(403, 'Obtivemos um erro ao realizar a remoção do produto ', err))
                         }else{
-                            resolve(contructResult(null, 'Produto removido com sucesso', null, product))
+                            resolve(contructResult(undefined, 'Produto removido com sucesso', undefined, product))
                         }
                     })
                 }else{

@@ -11,7 +11,7 @@
  */
 
 // Vamos importar aquela configuração que fizemos lá atrás
-const app = require('./config/app.js')
+const {app} = require('./config/app.js')
 
 // Aqui estamos solicitando nosso controller de produtos
 const product = require('./controllers/product.js')
@@ -48,7 +48,7 @@ app.get('/produtos', function(req, res){
  * de apenas um produto, ele deve conter um id
  * na solicitação
  */
-app.get('/produtos', function(req, res){
+app.get('/produto', function(req, res){
     // Vamos obter o id vindo desta solicitação
     var id = req.query.id
     if(id){
@@ -93,8 +93,8 @@ app.post('/produto', function(req, res){
      * poderia se usado o validator para fazer isso!
      * 
      */
-    var name = req.query.name
-    var price = req.query.price
+    var name = req.body.name
+    var price = req.body.price
     product.save(name, price).then(result => {
         res.status(result.status)
         res.json(result)
@@ -110,9 +110,9 @@ app.post('/produto', function(req, res){
  */
 app.put('/produto', function(req, res){
     // vamos faze a mesma tratativa citada no save ↑↑↑
-    var id = req.query.id
-    var name = req.query.name
-    var price = req.query.price
+    var id = req.body.id
+    var name = req.body.name
+    var price = req.body.price
     /*
         Lembre-se que dentro do método update,
         temos uma validação, para verificar se
@@ -131,7 +131,7 @@ app.put('/produto', function(req, res){
  * Agora vamos incluir o delete.
  */
 app.delete('/produto', function(req, res){
-    var id = req.query.id
+    var id = req.body.id
 
     product.delete(id).then(result => {
         res.status(result.status)

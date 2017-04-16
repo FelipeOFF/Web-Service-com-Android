@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">MobileApplication</string>
+    <string name="app_name">Product Manager</string>
+    <string name="productname">ProductName</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
+    <string name="textview">TextView</string>
+    <string name="name">Name</string>
+    <string name="nome">Nome</string>
+    <string name="pre_o">Preço</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="concluir">Concluir</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
